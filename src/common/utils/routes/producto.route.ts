@@ -13,6 +13,16 @@ export const routeProductoFindBy = {
     title: 'Busqueda Producto'
 };
 
+export const routeProductoAttribute = {
+    route: '[POST].../v1/producto/busqueda/:attribute/:value',
+    title: 'Busqueda Producto por Atributo y Valor.'
+};
+
+export const routeProductoNotIntockGeneral = {
+    route: '[POST].../v1/producto/not-in-stock-general',
+    title: 'Productos que no están en la tabla de stock general.'
+};
+
 export const routeProductoUpdate = {
     route: '[POST].../v1/producto',
     title: 'Actualizar Producto'

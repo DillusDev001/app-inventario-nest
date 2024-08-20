@@ -37,12 +37,17 @@ async function bootstrap() {
     .addTag('compra')
     .addTag('compra-detalle')
 
+    .addTag('color')
+    .addTag('talla')
+    .addTag('categoria')
+    .addTag('material')
+
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('documentation', app, document);
 
   app.useGlobalPipes(new ValidationPipe()); // Se agrega la validacion global de todos los DTO's
 
-  await app.listen(3000);
+  await app.listen(parseInt(process.env.API_PORT));
 }
 bootstrap();

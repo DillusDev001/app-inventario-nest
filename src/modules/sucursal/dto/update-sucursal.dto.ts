@@ -8,6 +8,7 @@ export class UpdateSucursalDto extends PartialType(SucursalDto) {
     direccion: string;
     telefono: string;
     usuario_encargado: string;
+    descripcion: string;
     estado: number;
 
 }

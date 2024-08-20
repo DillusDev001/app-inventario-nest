@@ -19,6 +19,9 @@ export class Sucursal {
     usuario_encargado: string;
 
     @Column()
+    descripcion: string;
+
+    @Column()
     estado: number;
 
 }

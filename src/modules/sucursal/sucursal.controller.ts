@@ -74,7 +74,7 @@ export class SucursalController {
         apiResult.code = HttpStatus.OK;
         apiResult.message = result.message;
         apiResult.boolean = true;
-        apiResult.data = [result.object];
+        apiResult.data = result.data;
       } else {
         apiResult.code = HttpStatus.BAD_REQUEST;
         apiResult.message = result.message;

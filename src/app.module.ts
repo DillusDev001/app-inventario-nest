@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsuarioModule } from './modules/usuario/usuario.module';
-import { ProductoModule } from './modules/producto-module/producto/producto.module';
+import { ProductoModule } from './modules/producto/producto.module';
 import { SucursalModule } from './modules/sucursal/sucursal.module';
 import { AlmacenModule } from './modules/almacen/almacen.module';
 import { StockGeneralModule } from './modules/stock-module/stock-general/stock-general.module';
@@ -17,8 +17,10 @@ import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthService } from './common/services/auth.service';
-import { ProductoColorModule } from './modules/producto-module/producto-color/producto-color.module';
-import { ProductoTallaModule } from './modules/producto-module/producto-talla/producto-talla.module';
+import { ColorModule } from './modules/mantenimiento-module/color/color.module';
+import { TallaModule } from './modules/mantenimiento-module/talla/talla.module';
+import { MaterialModule } from './modules/mantenimiento-module/material/material.module';
+import { CategoriaModule } from './modules/mantenimiento-module/categoria/categoria.module';
 
 @Module({
   imports: [
@@ -37,11 +39,12 @@ import { ProductoTallaModule } from './modules/producto-module/producto-talla/pr
       synchronize: false
     }),
     UsuarioModule,
-    ProductoModule, ProductoColorModule, ProductoTallaModule,
+    ProductoModule,
     SucursalModule, AlmacenModule,
     StockGeneralModule, StockSucursalModule,
     CompraModule, CompraDetalleModule,
-    VentaModule, VentaDetalleModule, VentaPagoModule,
+    VentaModule, VentaDetalleModule, VentaPagoModule, 
+    ColorModule, TallaModule, MaterialModule, CategoriaModule,
   ],
   controllers: [AppController],
   providers: [AppService, AuthService],

@@ -20,6 +20,10 @@ export class SucursalDto {
 
     @ApiProperty()
     @IsNotEmpty()
+    descripcion: string;
+
+    @ApiProperty()
+    @IsNotEmpty()
     usuario_encargado: string;
 
     @ApiProperty()

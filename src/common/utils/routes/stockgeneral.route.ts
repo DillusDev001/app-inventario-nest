@@ -3,6 +3,11 @@ export const routeStockGeneralCreate = {
     title: 'Agregar Stock General'
 };
 
+export const routeStockGeneralCreateMultiple = {
+    route: '[POST].../v1/stock-general/multiple',
+    title: 'Agregar Stock General Multiples'
+};
+
 export const routeStockGeneralFindAll = {
     route: '[POST].../v1/stock-general',
     title: 'Lista Stock General'

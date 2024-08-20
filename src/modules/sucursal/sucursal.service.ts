@@ -5,11 +5,15 @@ import { Sucursal } from './entities/sucursal.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ServiceResult } from 'src/common/interfaces/service.result';
+import { UsuarioService } from '../usuario/usuario.service';
 
 @Injectable()
 export class SucursalService {
 
-  constructor(@InjectRepository(Sucursal) private sucursalRepository: Repository<Sucursal>) { }
+  constructor(
+    @InjectRepository(Sucursal) private sucursalRepository: Repository<Sucursal>,
+    private usuarioService: UsuarioService
+  ) { }
 
   async create(sucursalDto: SucursalDto): Promise<ServiceResult> {
     let serviceResult = { boolean: false, message: '', number: 0, object: null, data: null } as ServiceResult;
@@ -28,8 +32,21 @@ export class SucursalService {
   async findAll(): Promise<ServiceResult> {
     let serviceResult = { boolean: false, message: '', number: 0, object: null, data: null } as ServiceResult;
 
-    const result = await this.sucursalRepository.find();
+    const result = await this.sucursalRepository.find({ order: { nombre: 'ASC' } });
     const count = result.length;
+
+    if (count > 0) {
+      for (let i = 0; i < count; i++) {
+        //const id
+        const resultUsuario = await this.usuarioService.findByUsuario(result[i].usuario_encargado);
+
+        if (resultUsuario.boolean) {
+          result[i]['encargado'] = resultUsuario.data[0];
+        } else {
+          result[i]['encargado'] = null;
+        }
+      }
+    }
 
     serviceResult.boolean = count > 0 ? true : false;
     serviceResult.message = count + ' sucursal(es) encontrado(s).';
@@ -42,12 +59,26 @@ export class SucursalService {
   async findByID(id_sucursal: number): Promise<ServiceResult> {
     let serviceResult = { boolean: false, message: '', number: 0, object: null, data: null } as ServiceResult;
 
-    const result = await this.sucursalRepository.findOne({ where: { id_sucursal: id_sucursal } });
+    const result = await this.sucursalRepository.find({ where: { id_sucursal: id_sucursal } });
+    const count = result.length;
 
-    serviceResult.boolean = result ? true : false;
-    serviceResult.message = result ? 'Se ha encontrado.' : 'No se ha encontrado';
-    serviceResult.number = result ? 1 : 0;
-    serviceResult.object = result ? result : null;
+    if (count > 0) {
+      for (let i = 0; i < count; i++) {
+        //const id
+        const resultUsuario = await this.usuarioService.findByUsuario(result[i].usuario_encargado);
+
+        if (resultUsuario.boolean) {
+          result[i]['encargado'] = resultUsuario.data[0];
+        } else {
+          result[i]['encargado'] = null;
+        }
+      }
+    }
+
+    serviceResult.boolean = count === 1 ? true : false;
+    serviceResult.message = count === 1 ? 'Se ha encontrado.' : 'No se ha encontrado sucursal.';
+    serviceResult.number = count;
+    serviceResult.data = result;
 
     return serviceResult;
   }

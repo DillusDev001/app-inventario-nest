@@ -1,11 +1,15 @@
-import { Column, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn } from "typeorm";
 
+@Entity()
 export class StockSucursal {
 
     @PrimaryColumn()
     cod_producto: string;
 
-    @Column()
+    @PrimaryColumn()
+    id_sucursal: number;
+
+    @PrimaryColumn()
     id_almacen: number;
 
     @Column()
@@ -13,5 +17,6 @@ export class StockSucursal {
 
     @Column()
     fec_mod: string;
+
 
 }

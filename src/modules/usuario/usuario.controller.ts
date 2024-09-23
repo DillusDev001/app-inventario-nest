@@ -37,7 +37,6 @@ export class UsuarioController {
     return apiResult;
   }
   
-
   @Get()
   async findAll(): Promise<ApiResult> {
     let apiResult = { title: routeUsuarioFindAll.title, route: routeUsuarioFindAll.route, status: 'error', code: 0, message: '', boolean: false, rows: 0, data: null } as ApiResult;

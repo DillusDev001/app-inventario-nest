@@ -12,6 +12,10 @@ export class ColorDto {
 
     @ApiProperty()
     @IsNotEmpty()
+    hexadecimal: string;
+
+    @ApiProperty()
+    @IsNotEmpty()
     user_crea: string;
 
     @ApiProperty()

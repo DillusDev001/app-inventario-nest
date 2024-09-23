@@ -21,6 +21,7 @@ import { ColorModule } from './modules/mantenimiento-module/color/color.module';
 import { TallaModule } from './modules/mantenimiento-module/talla/talla.module';
 import { MaterialModule } from './modules/mantenimiento-module/material/material.module';
 import { CategoriaModule } from './modules/mantenimiento-module/categoria/categoria.module';
+import { ClienteModule } from './modules/cliente/cliente.module';
 
 @Module({
   imports: [
@@ -44,7 +45,7 @@ import { CategoriaModule } from './modules/mantenimiento-module/categoria/catego
     StockGeneralModule, StockSucursalModule,
     CompraModule, CompraDetalleModule,
     VentaModule, VentaDetalleModule, VentaPagoModule, 
-    ColorModule, TallaModule, MaterialModule, CategoriaModule,
+    ColorModule, TallaModule, MaterialModule, CategoriaModule, ClienteModule,
   ],
   controllers: [AppController],
   providers: [AppService, AuthService],

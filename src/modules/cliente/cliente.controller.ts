@@ -1,55 +1,31 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, HttpStatus } from '@nestjs/common';
-import { StockGeneralService } from './stock-general.service';
-import { StockGeneralDto } from './dto/stock-general.dto';
-import { UpdateStockGeneralDto } from './dto/update-stock-general.dto';
+import { ClienteService } from './cliente.service';
+import { ClienteDto } from './dto/cliente.dto';
+import { UpdateClienteDto } from './dto/update-cliente.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiResult } from 'src/common/interfaces/api.result';
-import { routeStockGeneralCreate, routeStockGeneralCreateMultiple, routeStockGeneralFindAll, routeStockGeneralFindBy, routeStockGeneralRemove, routeStockGeneralUpdate } from 'src/common/utils/routes/stockgeneral.route';
+import { routeClienteAttribute, routeClienteCreate, routeClienteFindAll, routeClienteFindBy, routeClienteRemove, routeClienteUpdate } from 'src/common/utils/routes/cliente.route';
 
-@ApiTags('stock-general')
-@Controller('stock-general')
-export class StockGeneralController {
+@ApiTags('cliente')
+@Controller('cliente')
+export class ClienteController {
 
-  constructor(private readonly stockGeneralService: StockGeneralService) { }
+  constructor(private readonly clienteService: ClienteService) { }
 
   @Post()
-  async create(@Body() stockGeneralDto: StockGeneralDto): Promise<ApiResult> {
-    let apiResult = { title: routeStockGeneralCreate.title, route: routeStockGeneralCreate.route, status: 'error', code: 0, message: '', boolean: false, rows: 0, data: null } as ApiResult;
+  async create(@Body() clienteDto: ClienteDto): Promise<ApiResult> {
+    let apiResult = { title: routeClienteCreate.title, route: routeClienteCreate.route, status: 'error', code: 0, message: '', boolean: false, rows: 0, data: null } as ApiResult;
 
     try {
-      const result = await this.stockGeneralService.create(stockGeneralDto);
+      const result = await this.clienteService.create(clienteDto);
 
       if (result.boolean) {
         apiResult.status = 'correct';
         apiResult.code = HttpStatus.OK;
         apiResult.message = result.message;
         apiResult.boolean = true;
-        apiResult.data = [result.object]
-      } else {
-        apiResult.code = HttpStatus.BAD_REQUEST;
-        apiResult.message = result.message;
-      }
-    } catch (error) {
-      apiResult.code = error.status;
-      apiResult.message = error;
-    }
-
-    return apiResult;
-  }
-
-  @Post('multiple')
-  async createMultiple(): Promise<ApiResult> {
-    let apiResult = { title: routeStockGeneralCreateMultiple.title, route: routeStockGeneralCreateMultiple.route, status: 'error', code: 0, message: '', boolean: false, rows: 0, data: null } as ApiResult;
-
-    try {
-      const result = await this.stockGeneralService.createMultipleNotIn();
-
-      if (result.boolean) {
-        apiResult.status = 'correct';
-        apiResult.code = HttpStatus.OK;
-        apiResult.message = result.message;
         apiResult.rows = result.number;
-        apiResult.boolean = true;
+        apiResult.data = [result.object]
       } else {
         apiResult.code = HttpStatus.BAD_REQUEST;
         apiResult.message = result.message;
@@ -64,10 +40,10 @@ export class StockGeneralController {
 
   @Get()
   async findAll(): Promise<ApiResult> {
-    let apiResult = { title: routeStockGeneralFindAll.title, route: routeStockGeneralFindAll.route, status: 'error', code: 0, message: '', boolean: false, rows: 0, data: null } as ApiResult;
+    let apiResult = { title: routeClienteFindAll.title, route: routeClienteFindAll.route, status: 'error', code: 0, message: '', boolean: false, rows: 0, data: null } as ApiResult;
 
     try {
-      const result = await this.stockGeneralService.findAll();
+      const result = await this.clienteService.findAll();
 
       if (result.boolean) {
         apiResult.status = 'correct';
@@ -88,12 +64,12 @@ export class StockGeneralController {
     return apiResult;
   }
 
-  @Get(':cod_producto')
-  async findBy(@Param('cod_producto') cod_producto: string): Promise<ApiResult> {
-    let apiResult = { title: routeStockGeneralFindBy.title, route: routeStockGeneralFindBy.route, status: 'error', code: 0, message: '', boolean: false, rows: 0, data: null } as ApiResult;
+  @Get(':id_cliente')
+  async findById(@Param('id_cliente') id_cliente: number): Promise<ApiResult> {
+    let apiResult = { title: routeClienteFindBy.title, route: routeClienteFindBy.route, status: 'error', code: 0, message: '', boolean: false, rows: 0, data: null } as ApiResult;
 
     try {
-      const result = await this.stockGeneralService.findByID(cod_producto);
+      const result = await this.clienteService.findById(id_cliente);
 
       if (result.boolean) {
         apiResult.status = 'correct';
@@ -101,7 +77,7 @@ export class StockGeneralController {
         apiResult.message = result.message;
         apiResult.boolean = true;
         apiResult.rows = result.number;
-        apiResult.data = result.data
+        apiResult.data = result.data;
       } else {
         apiResult.code = HttpStatus.BAD_REQUEST;
         apiResult.message = result.message;
@@ -114,12 +90,38 @@ export class StockGeneralController {
     return apiResult;
   }
 
-  @Patch(':cod_producto')
-  async update(@Param('cod_producto') cod_producto: string, @Body() updateStockGeneralDto: UpdateStockGeneralDto): Promise<ApiResult> {
-    let apiResult = { title: routeStockGeneralUpdate.title, route: routeStockGeneralUpdate.route, status: 'error', code: 0, message: '', boolean: false, rows: 0, data: null } as ApiResult;
+  @Get('busqueda/:attribute/:value')
+  async findAtribute(@Param('attribute') attribute: string, @Param('value') value: string): Promise<ApiResult> {
+    let apiResult = { title: routeClienteAttribute.title, route: routeClienteAttribute.route, status: 'error', code: 0, message: '', boolean: false, rows: 0, data: null } as ApiResult;
 
     try {
-      const result = await this.stockGeneralService.update(cod_producto, updateStockGeneralDto);
+      const result = await this.clienteService.findAtribute(attribute, value);
+
+      if (result.boolean) {
+        apiResult.status = 'correct';
+        apiResult.code = HttpStatus.OK;
+        apiResult.message = result.message;
+        apiResult.boolean = true;
+        apiResult.rows = result.number;
+        apiResult.data = result.data;
+      } else {
+        apiResult.code = HttpStatus.BAD_REQUEST;
+        apiResult.message = result.message;
+      }
+    } catch (error) {
+      apiResult.code = error.status;
+      apiResult.message = error.code;
+    }
+
+    return apiResult;
+  }
+
+  @Patch(':id_cliente')
+  async update(@Param('id_cliente') id_cliente: number, @Body() updateClienteDto: UpdateClienteDto): Promise<ApiResult> {
+    let apiResult = { title: routeClienteUpdate.title, route: routeClienteUpdate.route, status: 'error', code: 0, message: '', boolean: false, rows: 0, data: null } as ApiResult;
+
+    try {
+      const result = await this.clienteService.update(id_cliente, updateClienteDto);
 
       if (result.boolean) {
         apiResult.status = 'correct';
@@ -139,12 +141,12 @@ export class StockGeneralController {
     return apiResult;
   }
 
-  @Delete(':cod_producto')
-  async remove(@Param('cod_producto') cod_producto: string): Promise<ApiResult> {
-    let apiResult = { title: routeStockGeneralRemove.title, route: routeStockGeneralRemove.route, status: 'error', code: 0, message: '', boolean: false, rows: 0, data: null } as ApiResult;
+  @Delete(':id_cliente')
+  async remove(@Param('id_cliente') id_cliente: number): Promise<ApiResult> {
+    let apiResult = { title: routeClienteRemove.title, route: routeClienteRemove.route, status: 'error', code: 0, message: '', boolean: false, rows: 0, data: null } as ApiResult;
 
     try {
-      const result = await this.stockGeneralService.remove(cod_producto);
+      const result = await this.clienteService.remove(id_cliente);
 
       if (result.boolean) {
         apiResult.status = 'correct';

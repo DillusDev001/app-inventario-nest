@@ -1,21 +1,21 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Color {
+export class Cliente {
 
     @PrimaryGeneratedColumn()
-    id_color: number;
+    id_cliente: number;
 
     @Column()
-    color: string;
+    cliente: string;
 
     @Column()
-    hexadecimal: string;
+    razon: string;
 
     @Column()
-    user_crea: string;
-    
+    nit: string;
+
     @Column()
-    fec_crea: string;
+    celular: string;
 
 }

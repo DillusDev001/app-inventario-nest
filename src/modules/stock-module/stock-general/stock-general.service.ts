@@ -29,7 +29,7 @@ export class StockGeneralService {
     return serviceResult;
   }
 
-  async createMultiple(): Promise<ServiceResult> {
+  async createMultipleNotIn(): Promise<ServiceResult> {
     let serviceResult = { boolean: false, message: '', number: 0, object: null, data: null } as ServiceResult;
 
     const result = await this.productoService.findNotStockGeneral();
@@ -87,7 +87,11 @@ export class StockGeneralService {
   async findByID(cod_producto: string): Promise<ServiceResult> {
     let serviceResult = { boolean: false, message: '', number: 0, object: null, data: null } as ServiceResult;
 
-    const result = await this.stockGeneralRepository.find({ where: { cod_producto: cod_producto } });
+    const result = await this.stockGeneralRepository.createQueryBuilder()
+      .where("cod_producto like :value ", { value: '%' + cod_producto + '%' })
+      //.andWhere("estado = 1")
+      .getMany()
+    //const result = await this.stockGeneralRepository.find({ where: { cod_producto: cod_producto } });
     const count = result.length;
 
     if (count > 0) {

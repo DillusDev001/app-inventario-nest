@@ -7,7 +7,7 @@ export class StockGeneral {
     cod_producto: string;
 
     @Column()
-    cantidad: string;
+    cantidad: number;
 
     @Column()
     fec_mod: string;

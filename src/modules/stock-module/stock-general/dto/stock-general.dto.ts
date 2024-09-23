@@ -9,7 +9,7 @@ export class StockGeneralDto {
 
     @ApiProperty()
     @IsNotEmpty()
-    cantidad: string;
+    cantidad: number;
 
     @ApiProperty()
     fec_mod: string;

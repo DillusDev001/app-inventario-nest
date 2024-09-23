@@ -5,9 +5,10 @@ CREATE TABLE stock_general(
 );
 
 CREATE TABLE stock_sucursal(
-    cod_producto VARCHAR(500) PRIMARY KEY,
+    cod_producto VARCHAR(500),
     id_sucursal INT NOT NULL,
     id_almacen INT NOT NULL,
     cantidad INT NOT NULL, 
-    fec_mod TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    fec_mod TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (cod_producto, id_sucursal, id_almacen)
 );

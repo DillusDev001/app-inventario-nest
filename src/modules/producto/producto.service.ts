@@ -105,6 +105,24 @@ export class ProductoService {
     return serviceResult;
   }
 
+  async findNotStockSucursal(id_sucursal:number, id_almacen: number): Promise<ServiceResult> {
+    let serviceResult = { boolean: false, message: '', number: 0, object: null, data: null } as ServiceResult;
+
+    const result = await this.productoRepository
+      .createQueryBuilder()
+      .where('cod_producto NOT IN (SELECT cod_producto FROM stock_sucursal WHERE id_sucursal = :id_sucursal AND id_almacen = :id_almacen )', { id_sucursal, id_almacen })
+      .getMany();
+
+    const count = result.length;
+
+    serviceResult.boolean = count > 0 ? true : false;
+    serviceResult.message = count + ' producto(s) que no están es stock general.';
+    serviceResult.number = count;
+    serviceResult.data = result;
+
+    return serviceResult;
+  }
+
   async update(cod_producto: string, updateProductoDto: UpdateProductoDto): Promise<ServiceResult> {
     let serviceResult = { boolean: false, message: '', number: 0, object: null, data: null } as ServiceResult;
 

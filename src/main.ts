@@ -4,7 +4,18 @@ import { json } from 'express';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
+import * as fs from 'fs';
+import * as https from 'https';
+
 async function bootstrap() {
+
+  const httpsOptions = {
+    key: fs.readFileSync('./server.cert'),
+    cert: fs.readFileSync('./server.key'),
+  };
+
+  //const app = await NestFactory.create(AppModule, { httpsOptions });
+
   const app = await NestFactory.create(AppModule);
 
   app.enableCors(); // Cors access allowed
@@ -29,6 +40,8 @@ async function bootstrap() {
     .addTag('almacen')
     .addTag('stock-general')
     .addTag('stock-sucursal')
+
+    .addTag('cliente')
 
     .addTag('venta')
     .addTag('venta-detalle')

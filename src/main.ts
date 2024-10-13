@@ -42,6 +42,8 @@ async function bootstrap() {
     .addTag('stock-sucursal')
 
     .addTag('cliente')
+    .addTag('cliente-cuenta')
+    .addTag('cliente-cuenta-historial')
 
     .addTag('venta')
     .addTag('venta-detalle')

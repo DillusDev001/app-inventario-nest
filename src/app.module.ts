@@ -9,9 +9,6 @@ import { StockGeneralModule } from './modules/stock-module/stock-general/stock-g
 import { StockSucursalModule } from './modules/stock-module/stock-sucursal/stock-sucursal.module';
 import { CompraModule } from './modules/compra-module/compra/compra.module';
 import { CompraDetalleModule } from './modules/compra-module/compra-detalle/compra-detalle.module';
-import { VentaModule } from './modules/venta-module/venta/venta.module';
-import { VentaDetalleModule } from './modules/venta-module/venta-detalle/venta-detalle.module';
-import { VentaPagoModule } from './modules/venta-module/venta-pago/venta-pago.module';
 import { join } from 'path';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
@@ -21,7 +18,9 @@ import { ColorModule } from './modules/mantenimiento-module/color/color.module';
 import { TallaModule } from './modules/mantenimiento-module/talla/talla.module';
 import { MaterialModule } from './modules/mantenimiento-module/material/material.module';
 import { CategoriaModule } from './modules/mantenimiento-module/categoria/categoria.module';
-import { ClienteModule } from './modules/cliente/cliente.module';
+import { ClienteModule } from './modules/cliente-module/cliente/cliente.module';
+import { ClienteCuentaHistorialModule } from './modules/cliente-module/cliente-cuenta-historial/cliente-cuenta-historial.module';
+import { ClienteCuentaModule } from './modules/cliente-module/cliente-cuenta/cliente-cuenta.module';
 
 @Module({
   imports: [
@@ -44,8 +43,8 @@ import { ClienteModule } from './modules/cliente/cliente.module';
     SucursalModule, AlmacenModule,
     StockGeneralModule, StockSucursalModule,
     CompraModule, CompraDetalleModule,
-    VentaModule, VentaDetalleModule, VentaPagoModule, 
-    ColorModule, TallaModule, MaterialModule, CategoriaModule, ClienteModule,
+    ClienteModule, ClienteCuentaModule, ClienteCuentaHistorialModule,
+    ColorModule, TallaModule, MaterialModule, CategoriaModule, 
   ],
   controllers: [AppController],
   providers: [AppService, AuthService],

@@ -114,6 +114,37 @@ export class StockGeneralService {
     return serviceResult;
   }
 
+  async findAtribute(attribute: string, value: string): Promise<ServiceResult> {
+    let serviceResult = { boolean: false, message: '', number: 0, object: null, data: null } as ServiceResult;
+
+    const result = await this.stockGeneralRepository
+      .createQueryBuilder()
+      .orderBy("cod_producto", "ASC")
+      .where(attribute + " like :value", { value: '%' + value + '%' })
+      .getMany()
+
+    const count = result.length;
+
+    if (count > 0) {
+      for (let i = 0; i < count; i++) {
+        const resultProducto = await this.productoService.findByID(result[i].cod_producto);
+
+        if (resultProducto.boolean) {
+          result[i]['producto'] = resultProducto.object;
+        } else {
+          result[i]['producto'] = null;
+        }
+      }
+    }
+
+    serviceResult.boolean = count > 0 ? true : false;
+    serviceResult.message = count + ' productos(s) encontrado(s).';
+    serviceResult.number = count;
+    serviceResult.data = result;
+
+    return serviceResult;
+  }
+
   async update(cod_producto: string, updateStockGeneralDto: UpdateStockGeneralDto): Promise<ServiceResult> {
     let serviceResult = { boolean: false, message: '', number: 0, object: null, data: null } as ServiceResult;
 

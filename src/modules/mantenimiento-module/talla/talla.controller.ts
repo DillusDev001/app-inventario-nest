@@ -3,7 +3,7 @@ import { TallaService } from './talla.service';
 import { TallaDto } from './dto/talla.dto';
 import { UpdateTallaDto } from './dto/update-talla.dto';
 import { ApiResult } from 'src/common/interfaces/api.result';
-import { routeTallaCreate, routeTallaFindAll, routeTallaFindBy, routeTallaRemove, routeTallaUpdate } from 'src/common/utils/routes/talla.route';
+import { routeTallaCreate, routeTallaFindAll, routeTallaFindBy, routeTallaRemove, routeTallaUpdate } from 'src/common/utils/routes/mantenimiento-module/talla.route';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('talla')

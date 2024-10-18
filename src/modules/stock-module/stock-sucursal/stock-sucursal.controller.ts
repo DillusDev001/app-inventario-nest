@@ -4,7 +4,7 @@ import { StockSucursalDto } from './dto/stock-sucursal.dto';
 import { UpdateStockSucursalDto } from './dto/update-stock-sucursal.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiResult } from 'src/common/interfaces/api.result';
-import { routeStockSucursalCreate, routeStockSucursalCreateMultiple, routeStockSucursalFindAll, routeStockSucursalFindAttribute, routeStockSucursalFindCantidad, routeStockSucursalFindOne, routeStockSucursalRemove, routeStockSucursalUpdate } from 'src/common/utils/routes/stocksucursal.route';
+import { routeStockSucursalCreate, routeStockSucursalCreateMultiple, routeStockSucursalFindAll, routeStockSucursalFindAttribute, routeStockSucursalFindCantidad, routeStockSucursalFindOne, routeStockSucursalRemove, routeStockSucursalUpdate } from 'src/common/utils/routes/stock-module/stocksucursal.route';
 
 @ApiTags('stock-sucursal')
 @Controller('stock-sucursal')

@@ -6,10 +6,10 @@ import { StockSucursal } from './entities/stock-sucursal.entity';
 import { Repository } from 'typeorm';
 import { ServiceResult } from 'src/common/interfaces/service.result';
 import { ProductoService } from 'src/modules/producto/producto.service';
-import { SucursalService } from 'src/modules/sucursal/sucursal.service';
-import { AlmacenService } from 'src/modules/almacen/almacen.service';
+import { AlmacenService } from 'src/modules/almacen-module/almacen/almacen.service';
 import { StockGeneralService } from '../stock-general/stock-general.service';
 import { StockGeneralDto } from '../stock-general/dto/stock-general.dto';
+import { SucursalService } from 'src/modules/almacen-module/sucursal/sucursal.service';
 
 @Injectable()
 export class StockSucursalService {

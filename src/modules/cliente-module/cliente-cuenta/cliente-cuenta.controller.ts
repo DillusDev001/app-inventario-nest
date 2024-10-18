@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, HttpStatus } from '@nestjs/common';
 import { ClienteCuentaService } from './cliente-cuenta.service';
 import { ApiTags } from '@nestjs/swagger';
-import { routeClienteCuentaCreate, routeClienteCuentaFindBy, routeClienteCuentaRemove, routeClienteCuentaUpdate } from 'src/common/utils/routes/cliente-cuenta.route';
+import { routeClienteCuentaCreate, routeClienteCuentaFindBy, routeClienteCuentaRemove, routeClienteCuentaUpdate } from 'src/common/utils/routes/cliente-module/cliente-cuenta.route';
 import { ApiResult } from 'src/common/interfaces/api.result';
 import { ClienteCuentaDto } from './dto/cliente-cuenta.dto';
 import { UpdateClienteCuentaDto } from './dto/update-cliente-cuenta.dto';

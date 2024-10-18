@@ -15,7 +15,7 @@ export class ClienteCuentaHistorial {
     @Column()
     metodo_cuenta: string;
 
-    @Column()
+    @Column('decimal', { precision: 10, scale: 2 })
     monto: number;
 
     @Column()

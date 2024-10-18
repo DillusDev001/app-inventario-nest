@@ -6,7 +6,7 @@ export class ClienteCuenta {
     @PrimaryColumn()
     id_cliente: number;
 
-    @Column()
+    @Column('decimal', { precision: 10, scale: 2 })
     monto: number;
 
     @Column()

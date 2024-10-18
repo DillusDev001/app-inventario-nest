@@ -4,7 +4,7 @@ import { CategoriaDto } from './dto/categoria.dto';
 import { UpdateCategoriaDto } from './dto/update-categoria.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiResult } from 'src/common/interfaces/api.result';
-import { routeCategoriaCreate, routeCategoriaFindAll, routeCategoriaFindBy, routeCategoriaRemove, routeCategoriaUpdate } from 'src/common/utils/routes/categoria.route';
+import { routeCategoriaCreate, routeCategoriaFindAll, routeCategoriaFindBy, routeCategoriaRemove, routeCategoriaUpdate } from 'src/common/utils/routes/mantenimiento-module/categoria.route';
 
 @ApiTags('categoria')
 @Controller('categoria')

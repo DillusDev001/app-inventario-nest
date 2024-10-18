@@ -3,8 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsuarioModule } from './modules/usuario/usuario.module';
 import { ProductoModule } from './modules/producto/producto.module';
-import { SucursalModule } from './modules/sucursal/sucursal.module';
-import { AlmacenModule } from './modules/almacen/almacen.module';
+import { AlmacenModule } from './modules/almacen-module/almacen/almacen.module';
 import { StockGeneralModule } from './modules/stock-module/stock-general/stock-general.module';
 import { StockSucursalModule } from './modules/stock-module/stock-sucursal/stock-sucursal.module';
 import { CompraModule } from './modules/compra-module/compra/compra.module';
@@ -21,6 +20,12 @@ import { CategoriaModule } from './modules/mantenimiento-module/categoria/catego
 import { ClienteModule } from './modules/cliente-module/cliente/cliente.module';
 import { ClienteCuentaHistorialModule } from './modules/cliente-module/cliente-cuenta-historial/cliente-cuenta-historial.module';
 import { ClienteCuentaModule } from './modules/cliente-module/cliente-cuenta/cliente-cuenta.module';
+import { OperacionModule } from './modules/operacion-module/operacion/operacion.module';
+import { OperacionDetalleModule } from './modules/operacion-module/operacion-detalle/operacion-detalle.module';
+import { OperacionPagoModule } from './modules/operacion-module/operacion-pago/operacion-pago.module';
+import { OperacionSaldoModule } from './modules/operacion-module/operacion-saldo/operacion-saldo.module';
+import { OperacionSaldoHistorialModule } from './modules/operacion-module/operacion-saldo-historial/operacion-saldo-historial.module';
+import { SucursalModule } from './modules/almacen-module/sucursal/sucursal.module';
 
 @Module({
   imports: [
@@ -38,13 +43,23 @@ import { ClienteCuentaModule } from './modules/cliente-module/cliente-cuenta/cli
       dropSchema: false,
       synchronize: false
     }),
+
     UsuarioModule,
+
     ProductoModule,
+
     SucursalModule, AlmacenModule,
+
     StockGeneralModule, StockSucursalModule,
+
     CompraModule, CompraDetalleModule,
+
     ClienteModule, ClienteCuentaModule, ClienteCuentaHistorialModule,
+
     ColorModule, TallaModule, MaterialModule, CategoriaModule, 
+    
+    OperacionModule, OperacionDetalleModule, OperacionPagoModule, OperacionSaldoModule, OperacionSaldoHistorialModule, 
+    
   ],
   controllers: [AppController],
   providers: [AppService, AuthService],

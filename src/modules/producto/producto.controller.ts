@@ -4,7 +4,7 @@ import { ProductoDto } from './dto/producto.dto';
 import { UpdateProductoDto } from './dto/update-producto.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiResult } from 'src/common/interfaces/api.result';
-import { routeProductoAttribute, routeProductoCreate, routeProductoFindAll, routeProductoFindBy, routeProductoNotIntockGeneral, routeProductoRemove, routeProductoUpdate } from 'src/common/utils/routes/producto.route';
+import { routeProductoAttribute, routeProductoCreate, routeProductoFindAll, routeProductoFindBy, routeProductoNotIntockGeneral, routeProductoRemove, routeProductoUpdate } from 'src/common/utils/routes/producto/producto.route';
 
 @ApiTags('producto')
 @Controller('producto')

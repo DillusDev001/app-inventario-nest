@@ -4,7 +4,7 @@ import { MaterialDto } from './dto/material.dto';
 import { UpdateMaterialDto } from './dto/update-material.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiResult } from 'src/common/interfaces/api.result';
-import { routeMaterialCreate, routeMaterialFindAll, routeMaterialFindBy, routeMaterialRemove, routeMaterialUpdate } from 'src/common/utils/routes/material.route';
+import { routeMaterialCreate, routeMaterialFindAll, routeMaterialFindBy, routeMaterialRemove, routeMaterialUpdate } from 'src/common/utils/routes/mantenimiento-module/material.route';
 
 @ApiTags('material')
 @Controller('material')

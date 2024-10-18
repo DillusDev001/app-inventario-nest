@@ -18,7 +18,7 @@ export class ClienteCuentaHistorialService {
         await this.clienteCuentaHistorialRepository.save(newObj);
 
         serviceResult.boolean = true;
-        serviceResult.message = 'Item agregado a historial correctamente.';
+        serviceResult.message = 'Movimiento agregado correctamente.';
         serviceResult.number = 1;
         serviceResult.object = newObj;
 
@@ -28,7 +28,7 @@ export class ClienteCuentaHistorialService {
     async findById(id_cliente: number): Promise<ServiceResult> {
         let serviceResult = { boolean: false, message: '', number: 0, object: null, data: null } as ServiceResult;
 
-        const result = await this.clienteCuentaHistorialRepository.find({ where: { id_cliente }, order: { id_historial: 'DESC' } });
+        const result = await this.clienteCuentaHistorialRepository.find({ where: { id_cliente }, order: { id_historial: 'DESC' }, take: 5 });
         const count = result.length;
 
         serviceResult.boolean = count > 0 ? true : false;

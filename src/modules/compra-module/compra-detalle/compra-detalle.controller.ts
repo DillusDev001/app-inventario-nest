@@ -4,7 +4,7 @@ import { CompraDetalleDto } from './dto/compra-detalle.dto';
 import { UpdateCompraDetalleDto } from './dto/update-compra-detalle.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiResult } from 'src/common/interfaces/api.result';
-import { routeCompraDetalleCreate, routeCompraDetalleFindAll, routeCompraDetalleFindBy, routeCompraDetalleRemove, routeCompraDetalleUpdate } from 'src/common/utils/routes/compradetalla.route';
+import { routeCompraDetalleCreate, routeCompraDetalleFindAll, routeCompraDetalleFindBy, routeCompraDetalleRemove, routeCompraDetalleUpdate } from 'src/common/utils/routes/compra-module/compradetalla.route';
 
 @ApiTags('compra-detalle')
 @Controller('compra-detalle')

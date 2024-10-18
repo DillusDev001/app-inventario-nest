@@ -4,7 +4,7 @@ import { StockGeneralDto } from './dto/stock-general.dto';
 import { UpdateStockGeneralDto } from './dto/update-stock-general.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiResult } from 'src/common/interfaces/api.result';
-import { routeStockGeneralAttribute, routeStockGeneralCreate, routeStockGeneralCreateMultiple, routeStockGeneralFindAll, routeStockGeneralFindBy, routeStockGeneralRemove, routeStockGeneralUpdate } from 'src/common/utils/routes/stockgeneral.route';
+import { routeStockGeneralAttribute, routeStockGeneralCreate, routeStockGeneralCreateMultiple, routeStockGeneralFindAll, routeStockGeneralFindBy, routeStockGeneralRemove, routeStockGeneralUpdate } from 'src/common/utils/routes/stock-module/stockgeneral.route';
 
 @ApiTags('stock-general')
 @Controller('stock-general')

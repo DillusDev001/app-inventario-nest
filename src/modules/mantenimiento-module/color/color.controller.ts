@@ -3,7 +3,7 @@ import { ColorService } from './color.service';
 import { ColorDto } from './dto/color.dto';
 import { UpdateColorDto } from './dto/update-color.dto';
 import { ApiResult } from 'src/common/interfaces/api.result';
-import { routeColorCreate, routeColorFindAll, routeColorFindBy, routeColorRemove, routeColorUpdate } from 'src/common/utils/routes/color.route';
+import { routeColorCreate, routeColorFindAll, routeColorFindBy, routeColorRemove, routeColorUpdate } from 'src/common/utils/routes/mantenimiento-module/color.route';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('color')

@@ -3,7 +3,7 @@ import { ClienteCuentaHistorialService } from './cliente-cuenta-historial.servic
 import { ApiTags } from '@nestjs/swagger';
 import { ApiResult } from 'src/common/interfaces/api.result';
 import { ClienteCuentaHistorialDto } from './dto/cliente-cuenta-historial.dto';
-import { routeClienteCuentaHistorialCreate, routeClienteCuentaHistorialFindBy, routeClienteCuentaHistorialRemove, routeClienteCuentaHistorialUpdate } from 'src/common/utils/routes/cliente-cuenta-historial.route';
+import { routeClienteCuentaHistorialCreate, routeClienteCuentaHistorialFindBy, routeClienteCuentaHistorialRemove, routeClienteCuentaHistorialUpdate } from 'src/common/utils/routes/cliente-module/cliente-cuenta-historial.route';
 import { UpdateClienteCuentaHistorialDto } from './dto/update-cliente-cuenta-historial.dto';
 
 @ApiTags('cliente-cuenta-historial')

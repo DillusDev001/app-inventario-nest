@@ -4,7 +4,7 @@ import { ClienteDto } from './dto/cliente.dto';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiResult } from 'src/common/interfaces/api.result';
-import { routeClienteAttribute, routeClienteCreate, routeClienteFindAll, routeClienteFindBy, routeClienteRemove, routeClienteUpdate } from 'src/common/utils/routes/cliente.route';
+import { routeClienteAttribute, routeClienteCreate, routeClienteFindAll, routeClienteFindBy, routeClienteRemove, routeClienteUpdate } from 'src/common/utils/routes/cliente-module/cliente.route';
 
 @ApiTags('cliente')
 @Controller('cliente')

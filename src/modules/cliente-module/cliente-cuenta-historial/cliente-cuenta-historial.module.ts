@@ -5,8 +5,8 @@ import { ClienteCuentaHistorial } from './entities/cliente-cuenta-historial.enti
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
+  imports: [TypeOrmModule.forFeature([ClienteCuentaHistorial])],
   controllers: [ClienteCuentaHistorialController],
   providers: [ClienteCuentaHistorialService],
-  imports: [TypeOrmModule.forFeature([ClienteCuentaHistorial])],
 })
 export class ClienteCuentaHistorialModule {}

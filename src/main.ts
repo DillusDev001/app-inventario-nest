@@ -45,9 +45,11 @@ async function bootstrap() {
     .addTag('cliente-cuenta')
     .addTag('cliente-cuenta-historial')
 
-    .addTag('venta')
-    .addTag('venta-detalle')
-    .addTag('venta-pago')
+    .addTag('operacion')
+    .addTag('operacion-detalle')
+    .addTag('operacion-pago')
+    .addTag('operacion-saldo')
+    .addTag('operacion-saldo-historial')
 
     .addTag('compra')
     .addTag('compra-detalle')

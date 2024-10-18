@@ -4,7 +4,7 @@ import { UsuarioDto } from './dto/usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiResult } from 'src/common/interfaces/api.result';
-import { routeUsuarioAttribute, routeUsuarioCreate, routeUsuarioFindAll, routeUsuarioFindBy, routeUsuarioLogin, routeUsuarioRemove, routeUsuarioUpdate } from 'src/common/utils/routes/usuario.route';
+import { routeUsuarioAttribute, routeUsuarioCreate, routeUsuarioFindAll, routeUsuarioFindBy, routeUsuarioLogin, routeUsuarioRemove, routeUsuarioUpdate } from 'src/common/utils/routes/usuario/usuario.route';
 import { AuthService } from 'src/common/services/auth.service';
 
 @ApiTags('usuario')

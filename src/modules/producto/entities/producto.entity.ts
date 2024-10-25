@@ -2,8 +2,11 @@ import { Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class Producto {
-
+    
     @PrimaryColumn()
+    id_producto: number
+
+    @Column()
     cod_producto: string;
 
     @Column()

@@ -4,6 +4,9 @@ import { IsNotEmpty } from "class-validator";
 export class ProductoDto {
 
     @ApiProperty()
+    id_producto: number
+
+    @ApiProperty()
     @IsNotEmpty()
     cod_producto: string;
 

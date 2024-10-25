@@ -54,7 +54,8 @@ CREATE TABLE almacen(
 
 -- ********** PRODUCTO ********** --
 CREATE TABLE producto(
-    cod_producto VARCHAR(50) PRIMARY KEY,
+    id_producto INT PRIMARY KEY AUTO_INCREMENT,
+    cod_producto VARCHAR(50) NOT NULL,
     cod_hash VARCHAR(500) NOT NULL,
     codigo VARCHAR(500) NOT NULL,
     tipo VARCHAR(500) NOT NULL,

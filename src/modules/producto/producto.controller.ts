@@ -4,13 +4,38 @@ import { ProductoDto } from './dto/producto.dto';
 import { UpdateProductoDto } from './dto/update-producto.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiResult } from 'src/common/interfaces/api.result';
-import { routeProductoAttribute, routeProductoCreate, routeProductoFindAll, routeProductoFindBy, routeProductoNotIntockGeneral, routeProductoRemove, routeProductoUpdate } from 'src/common/utils/routes/producto/producto.route';
+import { routeProductoAttribute, routeProductoCreate, routeProductoCreateMultiple, routeProductoFindAll, routeProductoFindBy, routeProductoNotIntockGeneral, routeProductoRemove, routeProductoUpdate } from 'src/common/utils/routes/producto/producto.route';
 
 @ApiTags('producto')
 @Controller('producto')
 export class ProductoController {
 
   constructor(private readonly productoService: ProductoService) { }
+
+  @Post('/multiple')
+  async createMultiple(@Body() array: ProductoDto[]): Promise<ApiResult> {
+    let apiResult = { title: routeProductoCreateMultiple.title, route: routeProductoCreateMultiple.route, status: 'error', code: 0, message: '', boolean: false, rows: 0, data: null } as ApiResult;
+
+    try {
+      const result = await this.productoService.createMultiple(array);
+
+      if (result.boolean) {
+        apiResult.status = 'correct';
+        apiResult.code = HttpStatus.OK;
+        apiResult.message = result.message;
+        apiResult.boolean = true;
+        apiResult.data = [result.object]
+      } else {
+        apiResult.code = HttpStatus.BAD_REQUEST;
+        apiResult.message = result.message;
+      }
+    } catch (error) {
+      apiResult.code = error.status;
+      apiResult.message = error;
+    }
+
+    return apiResult;
+  }
 
   @Post()
   async create(@Body() productoDto: ProductoDto): Promise<ApiResult> {

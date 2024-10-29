@@ -1,3 +1,8 @@
+export const routeProductoCreateMultiple = {
+    route: '[POST].../v1/producto/multiple',
+    title: 'Agregar Producto Multiples'
+};
+
 export const routeProductoCreate = {
     route: '[POST].../v1/producto',
     title: 'Agregar Producto'

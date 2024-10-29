@@ -15,6 +15,24 @@ export class ProductoService {
     private readonly authService: AuthService
   ) { }
 
+  async createMultiple(array: ProductoDto[]): Promise<ServiceResult> {
+    let serviceResult = { boolean: false, message: '', number: 0, object: null, data: null } as ServiceResult;
+
+    const multiple = await this.productoRepository
+      .createQueryBuilder()
+      .insert()
+      .into(Producto)
+      .values(array)
+      .execute();
+
+    const rows = multiple.raw.affectedRows;
+    serviceResult.boolean = rows > 0 ? true : false;
+    serviceResult.message = rows > 0 ? rows + ' productos(s) agregada(s).' : 'No se han agregado productos.';
+    serviceResult.number = rows;
+
+    return serviceResult;
+  }
+
   async create(productoDto: ProductoDto): Promise<ServiceResult> {
     let serviceResult = { boolean: false, message: '', number: 0, object: null, data: null } as ServiceResult;
 

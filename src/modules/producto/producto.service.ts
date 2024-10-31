@@ -18,6 +18,14 @@ export class ProductoService {
   async createMultiple(array: ProductoDto[]): Promise<ServiceResult> {
     let serviceResult = { boolean: false, message: '', number: 0, object: null, data: null } as ServiceResult;
 
+    console.log(array);
+
+    for (const element of array) {
+      element.cod_hash = await this.authService.hashPassword(element.cod_producto);
+    }
+
+    console.log(array);
+
     const multiple = await this.productoRepository
       .createQueryBuilder()
       .insert()
@@ -60,7 +68,7 @@ export class ProductoService {
   async findAll(): Promise<ServiceResult> {
     let serviceResult = { boolean: false, message: '', number: 0, object: null, data: null } as ServiceResult;
 
-    const result = await this.productoRepository.find({ order: { cod_producto: 'ASC' } });
+    const result = await this.productoRepository.find({ order: { cod_producto: 'ASC' }, take: 40 });
 
     const count = result.length;
 
@@ -123,7 +131,7 @@ export class ProductoService {
     return serviceResult;
   }
 
-  async findNotStockSucursal(id_sucursal:number, id_almacen: number): Promise<ServiceResult> {
+  async findNotStockSucursal(id_sucursal: number, id_almacen: number): Promise<ServiceResult> {
     let serviceResult = { boolean: false, message: '', number: 0, object: null, data: null } as ServiceResult;
 
     const result = await this.productoRepository
